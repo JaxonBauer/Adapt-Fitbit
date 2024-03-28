@@ -39,31 +39,7 @@ if heart_rate_request.status_code == 200:
     <html>
     <head>
         <title>Heart Rate Data</title>
-        <style>
-            .container {
-                display: flex;
-            }
-            .table-container, .chart-container {
-                flex: 1;
-                padding: 10px;
-            }
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-            th, td {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-            .chart {
-                width: 400px;
-                height: 300px;
-            }
-        </style>
+        <link rel="stylesheet" href="app.css">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
@@ -117,7 +93,7 @@ if heart_rate_request.status_code == 200:
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, {heart_rate_data['value']['heartRateZones']});
                 var options = {{
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 }};
@@ -127,7 +103,7 @@ if heart_rate_request.status_code == 200:
 
             function heart_data_processing(result_data, heart_rate_data) {{
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -137,16 +113,16 @@ if heart_rate_request.status_code == 200:
                 heart_rate_data.forEach(function(zone) {{
                     switch (zone.name) {{
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -154,7 +130,7 @@ if heart_rate_request.status_code == 200:
                 }});
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -189,14 +165,23 @@ if sleep_request.status_code == 200:
     sleep_data_list = sleep_request.json()['sleep']
 
     # Create an HTML string to store the content
-    html_content = '<html><head><title>Sleep Data</title></head><body>'
+    html_content = '''
+    <html>
+    <head>
+        <title>Sleep Data</title>
+        <link rel="stylesheet" href="app.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body>'''
 
     # Iterate over each entry in the list
     for sleep_data in sleep_data_list:
         # Add date to HTML
         html_content += f'<h2>Date of Sleep: {sleep_data["dateOfSleep"]}</h2>'
         
+        html_content += '<div class="container">'
         # Add sleep summary to HTML
+        html_content += '<div>'
         html_content += '<p>Sleep Summary:</p>'
         html_content += '<ul>'
         html_content += f'<li>Total Minutes Asleep: {sleep_data["minutesAsleep"]}</li>'
@@ -208,7 +193,45 @@ if sleep_request.status_code == 200:
         html_content += '<ul>'
         for stage, value in sleep_data['levels']['summary'].items():
             html_content += f'<li>{stage.capitalize()}: {value["minutes"]} minutes</li>'
-        html_content += '</ul>'
+        html_content += '</ul></div>'
+
+        # Add the chart div
+        html_content += '<div class="chart-container">'
+        html_content += f'<div id="chart_sleep_div_{sleep_data["dateOfSleep"]}" class="chart"></div>'
+        html_content += '</div></div>'  # Close chart-container
+
+        # Prepare the JavaScript code for generating the chart
+        chart_script = f'''
+        <script type="text/javascript">
+            google.charts.load("current", {{ packages: ["corechart"] }});
+            google.charts.setOnLoadCallback(drawSleepChart);
+
+            function drawSleepChart() {{
+                var data = new google.visualization.DataTable();
+                sleepDataProcessing(data, {json.dumps(sleep_data['levels']['summary'])});
+                var options = {{
+                    title: "Sleep Stages",
+                    width: 400,
+                    height: 300,
+                }};
+                var chart = new google.visualization.PieChart(document.getElementById("chart_sleep_div_{sleep_data["dateOfSleep"]}"));
+                chart.draw(data, options);
+            }}
+
+            function sleepDataProcessing(result_data, sleep_data) {{
+                result_data.addColumn("string", "Stage");
+                result_data.addColumn("number", "Minutes");
+                var stages = Object.keys(sleep_data);
+                stages.forEach(function(stage, index) {{
+                    result_data.addRow([stage, sleep_data[stage]["minutes"]]);
+                }});
+            }}
+        </script>
+        '''
+
+        # Add the chart script
+        html_content += chart_script
+        html_content += '<br>'
 
         # Add sleep stages data to HTML in a table
         html_content += '<table border="1">'
@@ -220,7 +243,6 @@ if sleep_request.status_code == 200:
             html_content += f'<td>{level_data["seconds"] / 60}</td>'
             html_content += '</tr>'
         html_content += '</table>'
-        html_content += '<br>'
 
     # Close the body and HTML tags
     html_content += '</body></html>'
