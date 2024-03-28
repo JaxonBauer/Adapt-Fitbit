@@ -1,1 +1,34 @@
-<html><head><title>Sleep Data</title></head><body><h2>Date of Sleep: 2024-03-25</h2><p>Sleep Summary:</p><ul><li>Total Minutes Asleep: 394</li><li>Total Time in Bed: 434</li></ul><p>Sleep Stages Summary:</p><ul><li>Deep: 65 minutes</li><li>Light: 225 minutes</li><li>Rem: 104 minutes</li><li>Wake: 40 minutes</li></ul><table border="1"><tr><th>Date/Time</th><th>Level</th><th>Minutes</th></tr><tr><td>2024-03-25T00:56:30.000</td><td>Wake</td><td>1.0</td></tr><tr><td>2024-03-25T00:57:30.000</td><td>Light</td><td>20.5</td></tr><tr><td>2024-03-25T01:18:00.000</td><td>Deep</td><td>29.0</td></tr><tr><td>2024-03-25T01:47:00.000</td><td>Light</td><td>11.5</td></tr><tr><td>2024-03-25T01:58:30.000</td><td>Rem</td><td>6.0</td></tr><tr><td>2024-03-25T02:04:30.000</td><td>Light</td><td>22.5</td></tr><tr><td>2024-03-25T02:27:00.000</td><td>Deep</td><td>15.0</td></tr><tr><td>2024-03-25T02:42:00.000</td><td>Light</td><td>52.5</td></tr><tr><td>2024-03-25T03:34:30.000</td><td>Rem</td><td>36.0</td></tr><tr><td>2024-03-25T04:10:30.000</td><td>Light</td><td>24.5</td></tr><tr><td>2024-03-25T04:35:00.000</td><td>Deep</td><td>7.5</td></tr><tr><td>2024-03-25T04:42:30.000</td><td>Light</td><td>29.5</td></tr><tr><td>2024-03-25T05:12:00.000</td><td>Deep</td><td>4.5</td></tr><tr><td>2024-03-25T05:16:30.000</td><td>Light</td><td>27.5</td></tr><tr><td>2024-03-25T05:44:00.000</td><td>Rem</td><td>41.0</td></tr><tr><td>2024-03-25T06:25:00.000</td><td>Light</td><td>22.0</td></tr><tr><td>2024-03-25T06:47:00.000</td><td>Deep</td><td>10.5</td></tr><tr><td>2024-03-25T06:57:30.000</td><td>Light</td><td>29.5</td></tr><tr><td>2024-03-25T07:27:00.000</td><td>Wake</td><td>6.5</td></tr><tr><td>2024-03-25T07:33:30.000</td><td>Rem</td><td>23.5</td></tr><tr><td>2024-03-25T07:57:00.000</td><td>Wake</td><td>13.5</td></tr></table><br></body></html>
+
+    <html>
+    <head>
+        <title>Sleep Data</title>
+        <link rel="stylesheet" href="app.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    </head>
+    <body><h2>Date of Sleep: 2024-03-25</h2><div class="container"><div><p>Sleep Summary:</p><ul><li>Total Minutes Asleep: 394</li><li>Total Time in Bed: 434</li></ul><p>Sleep Stages Summary:</p><ul><li>Deep: 65 minutes</li><li>Light: 225 minutes</li><li>Rem: 104 minutes</li><li>Wake: 40 minutes</li></ul></div><div class="chart-container"><div id="chart_sleep_div_2024-03-25" class="chart"></div></div></div>
+        <script type="text/javascript">
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawSleepChart);
+
+            function drawSleepChart() {
+                var data = new google.visualization.DataTable();
+                sleepDataProcessing(data, {"deep": {"count": 5, "minutes": 65, "thirtyDayAvgMinutes": 95}, "light": {"count": 29, "minutes": 225, "thirtyDayAvgMinutes": 240}, "rem": {"count": 9, "minutes": 104, "thirtyDayAvgMinutes": 90}, "wake": {"count": 31, "minutes": 40, "thirtyDayAvgMinutes": 60}});
+                var options = {
+                    title: "Sleep Stages",
+                    width: 400,
+                    height: 300,
+                };
+                var chart = new google.visualization.PieChart(document.getElementById("chart_sleep_div_2024-03-25"));
+                chart.draw(data, options);
+            }
+
+            function sleepDataProcessing(result_data, sleep_data) {
+                result_data.addColumn("string", "Stage");
+                result_data.addColumn("number", "Minutes");
+                var stages = Object.keys(sleep_data);
+                stages.forEach(function(stage, index) {
+                    result_data.addRow([stage, sleep_data[stage]["minutes"]]);
+                });
+            }
+        </script>
+        <br><table border="1"><tr><th>Date/Time</th><th>Level</th><th>Minutes</th></tr><tr><td>2024-03-25T00:56:30.000</td><td>Wake</td><td>1.0</td></tr><tr><td>2024-03-25T00:57:30.000</td><td>Light</td><td>20.5</td></tr><tr><td>2024-03-25T01:18:00.000</td><td>Deep</td><td>29.0</td></tr><tr><td>2024-03-25T01:47:00.000</td><td>Light</td><td>11.5</td></tr><tr><td>2024-03-25T01:58:30.000</td><td>Rem</td><td>6.0</td></tr><tr><td>2024-03-25T02:04:30.000</td><td>Light</td><td>22.5</td></tr><tr><td>2024-03-25T02:27:00.000</td><td>Deep</td><td>15.0</td></tr><tr><td>2024-03-25T02:42:00.000</td><td>Light</td><td>52.5</td></tr><tr><td>2024-03-25T03:34:30.000</td><td>Rem</td><td>36.0</td></tr><tr><td>2024-03-25T04:10:30.000</td><td>Light</td><td>24.5</td></tr><tr><td>2024-03-25T04:35:00.000</td><td>Deep</td><td>7.5</td></tr><tr><td>2024-03-25T04:42:30.000</td><td>Light</td><td>29.5</td></tr><tr><td>2024-03-25T05:12:00.000</td><td>Deep</td><td>4.5</td></tr><tr><td>2024-03-25T05:16:30.000</td><td>Light</td><td>27.5</td></tr><tr><td>2024-03-25T05:44:00.000</td><td>Rem</td><td>41.0</td></tr><tr><td>2024-03-25T06:25:00.000</td><td>Light</td><td>22.0</td></tr><tr><td>2024-03-25T06:47:00.000</td><td>Deep</td><td>10.5</td></tr><tr><td>2024-03-25T06:57:30.000</td><td>Light</td><td>29.5</td></tr><tr><td>2024-03-25T07:27:00.000</td><td>Wake</td><td>6.5</td></tr><tr><td>2024-03-25T07:33:30.000</td><td>Rem</td><td>23.5</td></tr><tr><td>2024-03-25T07:57:00.000</td><td>Wake</td><td>13.5</td></tr></table></body></html>

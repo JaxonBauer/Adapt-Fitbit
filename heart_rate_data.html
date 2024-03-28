@@ -2,91 +2,12 @@
     <html>
     <head>
         <title>Heart Rate Data</title>
-        <style>
-            .container {
-                display: flex;
-            }
-            .table-container, .chart-container {
-                flex: 1;
-                padding: 10px;
-            }
-            table {
-                border-collapse: collapse;
-                width: 100%;
-            }
-            th, td {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
-            th {
-                background-color: #f2f2f2;
-            }
-            .chart {
-                width: 400px;
-                height: 300px;
-            }
-        </style>
+        <link rel="stylesheet" href="app.css">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     </head>
     <body>
     <h1>Heart Rate Data - 
-    Participant #62314</h1><h2>Date: 2024-02-27</h2><p>Resting Heart Rate: Not available</p><div class="container"><div class="table-container"><table border="1"><tr><th>Name</th><th>Minutes</th><th>Min</th><th>Max</th><th>Calories Out</th></tr><tr><td>Out of Range</td><td>1439</td><td>30</td><td>106</td><td>1869</td></tr><tr><td>Fat Burn</td><td>1</td><td>106</td><td>129</td><td>5</td></tr><tr><td>Cardio</td><td>0</td><td>129</td><td>159</td><td>0</td></tr><tr><td>Peak</td><td>0</td><td>159</td><td>220</td><td>0</td></tr></table></div><div class="chart-container"><div id="chart_div_2024-02-27" class="chart"></div></div></div>
-        <script type="text/javascript">
-            google.charts.load("current", { packages: ["corechart"] });
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-                var data = new google.visualization.DataTable();
-                heart_data_processing(data, [{'caloriesOut': 1868.5695600000001, 'max': 106, 'min': 30, 'minutes': 1439, 'name': 'Out of Range'}, {'caloriesOut': 4.86486, 'max': 129, 'min': 106, 'minutes': 1, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 129, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
-                var options = {
-                    title: "How much time was spent in each zone?",
-                    width: 400,
-                    height: 300,
-                };
-                var chart = new google.visualization.PieChart(document.getElementById("chart_div_2024-02-27"));
-                chart.draw(data, options);
-            }
-
-            function heart_data_processing(result_data, heart_rate_data) {
-                var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
-                    ["Out of Range", 0],
-                    ["Fat Burn", 0],
-                    ["Cardio", 0],
-                    ["Peak", 0],
-                ]);
-
-                heart_rate_data.forEach(function(zone) {
-                    switch (zone.name) {
-                        case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
-                            break;
-                        case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
-                            break;
-                        case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
-                            break;
-                        case "Peak":
-                            data.setValue(3, 1, zone.minutes);
-                            break;
-                        default:
-                            break;
-                    }
-                });
-
-                result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
-                result_data.addRows([
-                    ["Out of Range", data.getValue(0, 1)],
-                    ["Fat Burn", data.getValue(1, 1)],
-                    ["Cardio", data.getValue(2, 1)],
-                    ["Peak", data.getValue(3, 1)],
-                ]);
-            }
-        </script>
-        <h2>Date: 2024-02-28</h2><p>Resting Heart Rate: 61</p><div class="container"><div class="table-container"><table border="1"><tr><th>Name</th><th>Minutes</th><th>Min</th><th>Max</th><th>Calories Out</th></tr><tr><td>Out of Range</td><td>1416</td><td>30</td><td>107</td><td>2550</td></tr><tr><td>Fat Burn</td><td>24</td><td>107</td><td>130</td><td>148</td></tr><tr><td>Cardio</td><td>0</td><td>130</td><td>159</td><td>0</td></tr><tr><td>Peak</td><td>0</td><td>159</td><td>220</td><td>0</td></tr></table></div><div class="chart-container"><div id="chart_div_2024-02-28" class="chart"></div></div></div>
+    Participant #62314</h1><h2>Date: 2024-02-28</h2><p>Resting Heart Rate: 61</p><div class="container"><div class="table-container"><table border="1"><tr><th>Name</th><th>Minutes</th><th>Min</th><th>Max</th><th>Calories Out</th></tr><tr><td>Out of Range</td><td>1416</td><td>30</td><td>107</td><td>2550</td></tr><tr><td>Fat Burn</td><td>24</td><td>107</td><td>130</td><td>148</td></tr><tr><td>Cardio</td><td>0</td><td>130</td><td>159</td><td>0</td></tr><tr><td>Peak</td><td>0</td><td>159</td><td>220</td><td>0</td></tr></table></div><div class="chart-container"><div id="chart_div_2024-02-28" class="chart"></div></div></div>
         <script type="text/javascript">
             google.charts.load("current", { packages: ["corechart"] });
             google.charts.setOnLoadCallback(drawChart);
@@ -95,7 +16,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2549.64996, 'max': 107, 'min': 30, 'minutes': 1416, 'name': 'Out of Range'}, {'caloriesOut': 147.68325, 'max': 130, 'min': 107, 'minutes': 24, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -105,7 +26,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -115,16 +36,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -132,7 +53,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -150,7 +71,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2260.3066200000003, 'max': 107, 'min': 30, 'minutes': 1401, 'name': 'Out of Range'}, {'caloriesOut': 202.58667000000003, 'max': 130, 'min': 107, 'minutes': 32, 'name': 'Fat Burn'}, {'caloriesOut': 63.7065, 'max': 159, 'min': 130, 'minutes': 7, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -160,7 +81,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -170,16 +91,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -187,7 +108,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -205,7 +126,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2304.09036, 'max': 107, 'min': 30, 'minutes': 1436, 'name': 'Out of Range'}, {'caloriesOut': 19.11195, 'max': 130, 'min': 107, 'minutes': 4, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -215,7 +136,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -225,16 +146,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -242,7 +163,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -260,7 +181,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2607.10164, 'max': 108, 'min': 30, 'minutes': 1404, 'name': 'Out of Range'}, {'caloriesOut': 207.68319000000002, 'max': 131, 'min': 108, 'minutes': 33, 'name': 'Fat Burn'}, {'caloriesOut': 27.56754, 'max': 159, 'min': 131, 'minutes': 3, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -270,7 +191,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -280,16 +201,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -297,7 +218,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -315,7 +236,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2224.74681, 'max': 108, 'min': 30, 'minutes': 1422, 'name': 'Out of Range'}, {'caloriesOut': 102.97287000000001, 'max': 131, 'min': 108, 'minutes': 18, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -325,7 +246,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -335,16 +256,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -352,7 +273,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -370,7 +291,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2552.7773700000002, 'max': 108, 'min': 30, 'minutes': 1407, 'name': 'Out of Range'}, {'caloriesOut': 198.18513000000002, 'max': 131, 'min': 108, 'minutes': 33, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -380,7 +301,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -390,16 +311,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -407,7 +328,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -425,7 +346,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2456.40681, 'max': 108, 'min': 30, 'minutes': 1412, 'name': 'Out of Range'}, {'caloriesOut': 134.13114000000002, 'max': 131, 'min': 108, 'minutes': 26, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 18.880290000000002, 'max': 220, 'min': 159, 'minutes': 2, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -435,7 +356,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -445,16 +366,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -462,7 +383,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -480,7 +401,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2458.37592, 'max': 109, 'min': 30, 'minutes': 1437, 'name': 'Out of Range'}, {'caloriesOut': 11.930489999999999, 'max': 131, 'min': 109, 'minutes': 3, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 160, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 160, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -490,7 +411,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -500,16 +421,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -517,7 +438,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -535,7 +456,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2244.20625, 'max': 109, 'min': 30, 'minutes': 1283, 'name': 'Out of Range'}, {'caloriesOut': 1001.1186900000001, 'max': 131, 'min': 109, 'minutes': 156, 'name': 'Fat Burn'}, {'caloriesOut': 7.41312, 'max': 160, 'min': 131, 'minutes': 1, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 160, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -545,7 +466,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -555,16 +476,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -572,7 +493,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -590,7 +511,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 1698.8786100000002, 'max': 109, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 131, 'min': 109, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 160, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 160, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -600,7 +521,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -610,16 +531,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -627,7 +548,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -645,7 +566,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2130.57702, 'max': 109, 'min': 30, 'minutes': 1430, 'name': 'Out of Range'}, {'caloriesOut': 72.04626, 'max': 131, 'min': 109, 'minutes': 10, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 160, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 160, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -655,7 +576,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -665,16 +586,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -682,7 +603,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -700,7 +621,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2454.90102, 'max': 109, 'min': 30, 'minutes': 1403, 'name': 'Out of Range'}, {'caloriesOut': 217.87623000000002, 'max': 131, 'min': 109, 'minutes': 35, 'name': 'Fat Burn'}, {'caloriesOut': 14.826239999999999, 'max': 160, 'min': 131, 'minutes': 2, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 160, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -710,7 +631,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -720,16 +641,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -737,7 +658,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -755,7 +676,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2775.57117, 'max': 107, 'min': 30, 'minutes': 1378, 'name': 'Out of Range'}, {'caloriesOut': 347.7403899999999, 'max': 130, 'min': 107, 'minutes': 60, 'name': 'Fat Burn'}, {'caloriesOut': 16.39958, 'max': 158, 'min': 130, 'minutes': 2, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -765,7 +686,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -775,16 +696,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -792,7 +713,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -810,7 +731,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2185.53276, 'max': 107, 'min': 30, 'minutes': 1431, 'name': 'Out of Range'}, {'caloriesOut': 44.81012, 'max': 130, 'min': 107, 'minutes': 9, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -820,7 +741,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -830,16 +751,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -847,7 +768,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -865,7 +786,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2329.54879, 'max': 108, 'min': 30, 'minutes': 1434, 'name': 'Out of Range'}, {'caloriesOut': 22.05859, 'max': 130, 'min': 108, 'minutes': 6, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -875,7 +796,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -885,16 +806,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -902,7 +823,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -920,7 +841,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 1896.69227, 'max': 108, 'min': 30, 'minutes': 1439, 'name': 'Out of Range'}, {'caloriesOut': 5.54352, 'max': 131, 'min': 108, 'minutes': 1, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -930,7 +851,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -940,16 +861,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -957,7 +878,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -975,7 +896,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2314.30411, 'max': 108, 'min': 30, 'minutes': 1383, 'name': 'Out of Range'}, {'caloriesOut': 314.47926999999993, 'max': 131, 'min': 108, 'minutes': 57, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -985,7 +906,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -995,16 +916,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1012,7 +933,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1030,7 +951,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 1692.6214400000001, 'max': 108, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 130, 'min': 108, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1040,7 +961,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1050,16 +971,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1067,7 +988,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1085,7 +1006,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 1669.63893, 'max': 108, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 130, 'min': 108, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1095,7 +1016,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1105,16 +1026,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1122,7 +1043,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1140,7 +1061,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2415.4733499999998, 'max': 109, 'min': 30, 'minutes': 1384, 'name': 'Out of Range'}, {'caloriesOut': 285.26030000000014, 'max': 131, 'min': 109, 'minutes': 52, 'name': 'Fat Burn'}, {'caloriesOut': 37.649739999999994, 'max': 159, 'min': 131, 'minutes': 4, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1150,7 +1071,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1160,16 +1081,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1177,7 +1098,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1195,7 +1116,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2360.26913, 'max': 111, 'min': 30, 'minutes': 1394, 'name': 'Out of Range'}, {'caloriesOut': 238.02488999999997, 'max': 132, 'min': 111, 'minutes': 44, 'name': 'Fat Burn'}, {'caloriesOut': 13.050370000000001, 'max': 159, 'min': 132, 'minutes': 2, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1205,7 +1126,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1215,16 +1136,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1232,7 +1153,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1250,7 +1171,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2324.23625, 'max': 110, 'min': 30, 'minutes': 1434, 'name': 'Out of Range'}, {'caloriesOut': 20.09526, 'max': 132, 'min': 110, 'minutes': 6, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 132, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1260,7 +1181,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1270,16 +1191,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1287,7 +1208,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1305,7 +1226,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2303.10158, 'max': 111, 'min': 30, 'minutes': 1438, 'name': 'Out of Range'}, {'caloriesOut': 7.16038, 'max': 132, 'min': 111, 'minutes': 2, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 132, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1315,7 +1236,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1325,16 +1246,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1342,7 +1263,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1360,7 +1281,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2045.78986, 'max': 110, 'min': 30, 'minutes': 1437, 'name': 'Out of Range'}, {'caloriesOut': 13.743310000000001, 'max': 132, 'min': 110, 'minutes': 3, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 132, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1370,7 +1291,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1380,16 +1301,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1397,7 +1318,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1415,7 +1336,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2051.44887, 'max': 109, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 131, 'min': 109, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 159, 'min': 131, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 159, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1425,7 +1346,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1435,16 +1356,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1452,7 +1373,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1470,7 +1391,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2021.1904900000002, 'max': 107, 'min': 30, 'minutes': 1434, 'name': 'Out of Range'}, {'caloriesOut': 36.37935, 'max': 130, 'min': 107, 'minutes': 6, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1480,7 +1401,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1490,16 +1411,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1507,7 +1428,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1525,7 +1446,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 2104.80525, 'max': 107, 'min': 30, 'minutes': 1437, 'name': 'Out of Range'}, {'caloriesOut': 8.430769999999999, 'max': 130, 'min': 107, 'minutes': 3, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1535,7 +1456,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1545,16 +1466,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1562,7 +1483,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1580,7 +1501,7 @@
                 var data = new google.visualization.DataTable();
                 heart_data_processing(data, [{'caloriesOut': 1663.28698, 'max': 107, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 130, 'min': 107, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1590,7 +1511,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1600,16 +1521,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1617,7 +1538,7 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
@@ -1626,16 +1547,16 @@
                 ]);
             }
         </script>
-        <h2>Date: 2024-03-27</h2><p>Resting Heart Rate: Not available</p><div class="container"><div class="table-container"><table border="1"><tr><th>Name</th><th>Minutes</th><th>Min</th><th>Max</th><th>Calories Out</th></tr><tr><td>Out of Range</td><td>1440</td><td>30</td><td>107</td><td>995</td></tr><tr><td>Fat Burn</td><td>0</td><td>107</td><td>130</td><td>0</td></tr><tr><td>Cardio</td><td>0</td><td>130</td><td>158</td><td>0</td></tr><tr><td>Peak</td><td>0</td><td>158</td><td>220</td><td>0</td></tr></table></div><div class="chart-container"><div id="chart_div_2024-03-27" class="chart"></div></div></div>
+        <h2>Date: 2024-03-27</h2><p>Resting Heart Rate: Not available</p><div class="container"><div class="table-container"><table border="1"><tr><th>Name</th><th>Minutes</th><th>Min</th><th>Max</th><th>Calories Out</th></tr><tr><td>Out of Range</td><td>1440</td><td>30</td><td>107</td><td>1664</td></tr><tr><td>Fat Burn</td><td>0</td><td>107</td><td>130</td><td>0</td></tr><tr><td>Cardio</td><td>0</td><td>130</td><td>158</td><td>0</td></tr><tr><td>Peak</td><td>0</td><td>158</td><td>220</td><td>0</td></tr></table></div><div class="chart-container"><div id="chart_div_2024-03-27" class="chart"></div></div></div>
         <script type="text/javascript">
             google.charts.load("current", { packages: ["corechart"] });
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
                 var data = new google.visualization.DataTable();
-                heart_data_processing(data, [{'caloriesOut': 994.3689, 'max': 107, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 130, 'min': 107, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
+                heart_data_processing(data, [{'caloriesOut': 1663.056, 'max': 107, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 130, 'min': 107, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
                 var options = {
-                    title: "How much time was spent in each zone?",
+                    title: "Calories Burned By Activity Zone",
                     width: 400,
                     height: 300,
                 };
@@ -1645,7 +1566,7 @@
 
             function heart_data_processing(result_data, heart_rate_data) {
                 var data = google.visualization.arrayToDataTable([
-                    ["Element", "Minutes"],
+                    ["Element", "Calories"],
                     ["Out of Range", 0],
                     ["Fat Burn", 0],
                     ["Cardio", 0],
@@ -1655,16 +1576,16 @@
                 heart_rate_data.forEach(function(zone) {
                     switch (zone.name) {
                         case "Out of Range":
-                            data.setValue(0, 1, zone.minutes);
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Fat Burn":
-                            data.setValue(1, 1, zone.minutes);
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Cardio":
-                            data.setValue(2, 1, zone.minutes);
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
                             break;
                         case "Peak":
-                            data.setValue(3, 1, zone.minutes);
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
                             break;
                         default:
                             break;
@@ -1672,7 +1593,62 @@
                 });
 
                 result_data.addColumn("string", "Element");
-                result_data.addColumn("number", "Minutes");
+                result_data.addColumn("number", "Calories");
+                result_data.addRows([
+                    ["Out of Range", data.getValue(0, 1)],
+                    ["Fat Burn", data.getValue(1, 1)],
+                    ["Cardio", data.getValue(2, 1)],
+                    ["Peak", data.getValue(3, 1)],
+                ]);
+            }
+        </script>
+        <h2>Date: 2024-03-28</h2><p>Resting Heart Rate: Not available</p><div class="container"><div class="table-container"><table border="1"><tr><th>Name</th><th>Minutes</th><th>Min</th><th>Max</th><th>Calories Out</th></tr><tr><td>Out of Range</td><td>1440</td><td>30</td><td>107</td><td>771</td></tr><tr><td>Fat Burn</td><td>0</td><td>107</td><td>130</td><td>0</td></tr><tr><td>Cardio</td><td>0</td><td>130</td><td>158</td><td>0</td></tr><tr><td>Peak</td><td>0</td><td>158</td><td>220</td><td>0</td></tr></table></div><div class="chart-container"><div id="chart_div_2024-03-28" class="chart"></div></div></div>
+        <script type="text/javascript">
+            google.charts.load("current", { packages: ["corechart"] });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = new google.visualization.DataTable();
+                heart_data_processing(data, [{'caloriesOut': 770.3183, 'max': 107, 'min': 30, 'minutes': 1440, 'name': 'Out of Range'}, {'caloriesOut': 0, 'max': 130, 'min': 107, 'minutes': 0, 'name': 'Fat Burn'}, {'caloriesOut': 0, 'max': 158, 'min': 130, 'minutes': 0, 'name': 'Cardio'}, {'caloriesOut': 0, 'max': 220, 'min': 158, 'minutes': 0, 'name': 'Peak'}]);
+                var options = {
+                    title: "Calories Burned By Activity Zone",
+                    width: 400,
+                    height: 300,
+                };
+                var chart = new google.visualization.PieChart(document.getElementById("chart_div_2024-03-28"));
+                chart.draw(data, options);
+            }
+
+            function heart_data_processing(result_data, heart_rate_data) {
+                var data = google.visualization.arrayToDataTable([
+                    ["Element", "Calories"],
+                    ["Out of Range", 0],
+                    ["Fat Burn", 0],
+                    ["Cardio", 0],
+                    ["Peak", 0],
+                ]);
+
+                heart_rate_data.forEach(function(zone) {
+                    switch (zone.name) {
+                        case "Out of Range":
+                            data.setValue(0, 1, Math.round(zone.caloriesOut));
+                            break;
+                        case "Fat Burn":
+                            data.setValue(1, 1, Math.round(zone.caloriesOut));
+                            break;
+                        case "Cardio":
+                            data.setValue(2, 1, Math.round(zone.caloriesOut));
+                            break;
+                        case "Peak":
+                            data.setValue(3, 1, Math.round(zone.caloriesOut));
+                            break;
+                        default:
+                            break;
+                    }
+                });
+
+                result_data.addColumn("string", "Element");
+                result_data.addColumn("number", "Calories");
                 result_data.addRows([
                     ["Out of Range", data.getValue(0, 1)],
                     ["Fat Burn", data.getValue(1, 1)],
