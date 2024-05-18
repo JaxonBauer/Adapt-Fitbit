@@ -25,3 +25,8 @@ Repository for ADAPT fitbit data collection tools used for autonomous collection
 > [OAuth 2.0 Libraries and Sample Code](https://dev.fitbit.com/build/reference/web-api/developer-guide/libraries-and-sample-code/)
 >
 > The functionality of the code is set up to be compatible with a new server-side application, as well as the current personal implementation.
+>
+> In order to get the connection to work for API implementation, you need to create a .env file that contains the following variables, initializing them to whatever values are gathered from the OAuth 2.0 process.
+>
+> Below is a representation of what the .env file should look like:
+![image](https://github.com/JaxonBauer/Adapt-Fitbit/assets/103966964/58c705e7-015e-4d49-91ed-2ac07a9b0ebb)
