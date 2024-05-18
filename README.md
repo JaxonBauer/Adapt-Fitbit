@@ -9,12 +9,19 @@ Repository for ADAPT fitbit data collection tools used for autonomous collection
 > [Example of sleep data HTML](https://github.com/JaxonBauer/Adapt-Fitbit/blob/main/sleep_data.html)
 
 ## 2. Create a fitbit account (if you do not have one already)
-> 
+> This will allow you to create a fitbit account (and allow you to register a device as well) if you haven't already, giving you a test connection to implement into the application th make sure the connections work properly.
 
 ## 3. Create a dev account through Fitbit, and create a new web application using the applications page
-> Please refer to the [Getting Started with Fitbit API]() document to see how to set up your application for server access
+> Please refer to the [Getting Started with Fitbit API](https://dev.fitbit.com/build/reference/web-api/) document to see how to set up your application for server access
 >
 >[Fitbit Development Applications Page](https://dev.fitbit.com/apps)
 
-## 3. Read the documentation on OAuth 2.0 for Fitbit device networks here
+## 4. Read the documentation on OAuth 2.0 for Fitbit device networks here
 > [Fitbit OAuth 2.0 Tutorial](https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/oauth2-tutorial/)
+
+## Important Things To Note
+> The current implementation is set up for a personal server, which means that it does not support multiple Fitbit device endpoint connections. In order to do this, a new app must be created following the procedures given as examples in the following link.
+>
+> [OAuth 2.0 Libraries and Sample Code](https://dev.fitbit.com/build/reference/web-api/developer-guide/libraries-and-sample-code/)
+>
+> The functionality of the code is set up to be compatible with a new server-side application, as well as the current personal implementation.
